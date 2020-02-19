@@ -12,7 +12,9 @@ class MoviesController < ApplicationController
 
   
   def index
-    @movies = Movie.all
+    # @movies = Movie.all
+    ordering = {:order => :title}
+    @movies = Movie.all(ordering)
     
   end
   
