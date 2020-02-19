@@ -15,13 +15,15 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = ["G", "PG", "PG-13", "R"]
     if params[:sort] == "title_header" 
-  		@movies = Movie.order(:title).all()
-  		@title_header = 'hilite'
-  	elsif params[:sort] == "release_date_header" 
+      @movies = Movie.order(:title).all()
+      @title_header = 'hilite'
+    end
+  	if params[:sort] == "release_date_header" 
   		@movies = Movie.order(:release_date).all()
-  	else
-  	  @movies = Movie.all()
+  		@title_header = 'hilite'
   	end
+  	@movies = Movie.all()
+  	
   	
   end
   
