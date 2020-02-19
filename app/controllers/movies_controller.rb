@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
     sort = params[:sort]
     case sort
     when 'title'
-      ordering,@title_header = {:title => :asc}, 'bg-warning hilite'
+      @title_header = {:title => :asc}
     end
     
   end
