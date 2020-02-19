@@ -11,12 +11,22 @@ class MoviesController < ApplicationController
   end
 
   
-  def index
-    @movies = Movie.all
-    # ordering = {:order => :title}
-    # @movies = Movie.all(ordering)
+  # def index
+  #   sort = params[:sort]
+  #   case sort
+  #   when 'title'
+  #     ordering = {:order => :title}
+  #   when 'release_date'
+  #     ordering = {:order => :release_date}
+  #   end
+  #   @movies = Movie.all(ordering)
     
+  # end
+  
+  def index
+    @movies = Movie.find(:all, :order => params[:sort_by])
   end
+  
   
   def new
     # default: render 'new' template
