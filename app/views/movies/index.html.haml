@@ -10,7 +10,7 @@
 //     = check_box_tag "ratings[#{rating}]", 1, @selected_ratings.include?(rating), :id => "ratings_#{rating}"
 //   = submit_tag 'Refresh', :class => 'btn btn-primary' :id => 'ratings_submit'
 
-= form_tag movies_path, :method => :get do
+= form_tag movies_path, :method => :get, :id => 'ratings_form' do
   Include:
   - @all_ratings.each do |rating|
     = rating
