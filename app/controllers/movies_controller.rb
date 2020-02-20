@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
       @release_date_header = 'hilite'
     end
     
-    # @all_ratings = ["G", "PG", "PG-13", "R"]
+    
     # @selected_ratings = params[:ratings]
     # if @selected_ratings == {}
     #   @selected_ratings = Hash[@all_ratings.map {|rating| [rating, rating]}]
