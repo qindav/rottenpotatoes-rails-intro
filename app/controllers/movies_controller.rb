@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
     end
     # @selected_ratings = params[:ratings].keys
     
-    @movies = Movie.where(rating: @selected_ratings)
+    @movies = Movie.where(rating: @selected_ratings).order(params[:sort])
     
     
     # if params[:sort] == "title" 
@@ -32,6 +32,7 @@ class MoviesController < ApplicationController
     #   @movies = Movie.order(:release_date).all()
     #   @release_date_header = 'hilite'
     # end
+    
 
   end
   
