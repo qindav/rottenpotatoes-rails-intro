@@ -15,6 +15,7 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = %w(G PG PG-13 R)
     @selected = params[:ratings] || {}
+    
     if @selected == {}
       @selected = Hash[@all_ratings.map {|rating| [rating, rating]}]
     end
