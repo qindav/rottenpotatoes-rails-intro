@@ -14,12 +14,12 @@ class MoviesController < ApplicationController
   
   def index
     @all_ratings = %w(G PG PG-13 R)
-    @selected_ratings = params[:ratings] || {}
-    if @selected_ratings == {}
-      @selected_ratings = Hash[@all_ratings.map {|rating| [rating, rating]}]
+    @selected = params[:ratings] || {}
+    if @selected == {}
+      @selected = Hash[@all_ratings.map {|rating| [rating, rating]}]
     end
     
-    @movies = Movie.where(rating: @selected_ratings.keys).order(ordering)
+    # @movies = Movie.where(rating: @selected_ratings.keys).order(ordering)
     
     @movies = Movie.all()
     if params[:sort] == "title" 
