@@ -13,7 +13,6 @@ class MoviesController < ApplicationController
   # end
   
   def index
-    @all_ratings = ["G", "PG", "PG-13", "R"]
     @movies = Movie.all()
     if params[:sort] == "title" 
       @movies = Movie.order(:title).all()
@@ -21,6 +20,12 @@ class MoviesController < ApplicationController
     elsif params[:sort] == "release_date" 
       @movies = Movie.order(:release_date).all()
       @release_date_header = 'hilite'
+    end
+    
+    @all_ratings = ["G", "PG", "PG-13", "R"]
+    @selected_ratings = params[:ratings]
+    if @selected_ratings == {}
+      @selected_ratings = Hash[@all_ratings.map {|rating| [rating, rating]}]
     end
   end
   
