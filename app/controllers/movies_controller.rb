@@ -15,10 +15,13 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = %w(G PG PG-13 R)
     
-    if params[:ratings].nil?
-      @selected_ratings =  %w(G PG PG-13 R) # ["G", "PG", "PG-13", "R"]
-    else
+    if params[:ratings] and params[:commit]
       @selected_ratings = params[:ratings].keys
+      session[:ratings] = params[:ratings]
+    elsif session[:ratings]
+      @selected_ratings = session[:ratings].keys
+    else
+      @selected_ratings =  %w(G PG PG-13 R)
     end
     
     @sort_type = nil
