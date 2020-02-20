@@ -21,8 +21,6 @@ class MoviesController < ApplicationController
       @selected_ratings = params[:ratings].keys
     end
     
-    @movies = Movie.where(rating: @selected_ratings)
-    
     @sort_type = nil
     if params[:sort] == "title"
       @sort_type = "title"
@@ -40,7 +38,7 @@ class MoviesController < ApplicationController
       @release_date_header = 'hilite'
     end
     
-    @movies = Movie.order(@sort_type).all()
+    @movies = Movie.order(@sort_type).where(rating: @selected_ratings)
 
   end
   
