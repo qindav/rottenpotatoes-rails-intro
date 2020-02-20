@@ -32,10 +32,10 @@ class MoviesController < ApplicationController
       @sort_type = "release_date"
       @release_date_header = 'hilite'
       session[:sort] = params[:sort]
-    elsif params[:sort].nils? and session[:sort] == "title"
+    elsif params[:sort].nil? and session[:sort] == "title"
       @sort_type = "title"
       @title_header = 'hilite'
-    elsif params[:sort].nils? and session[:sort] == "release_date"
+    elsif params[:sort].nil? and session[:sort] == "release_date"
       @sort_type = "release_date"
       @release_date_header = 'hilite'
     end
