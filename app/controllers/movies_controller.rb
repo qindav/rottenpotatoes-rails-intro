@@ -19,9 +19,7 @@ class MoviesController < ApplicationController
       @selected = Hash[@all_ratings.map {|rating| [rating, rating]}]
     end
     
-    @movies = Movie.where(rating: @selected_ratings)
-    
-    # @movies = Movie.all()
+    @movies = Movie.all().where(rating: @selected_ratings)
     # if params[:sort] == "title" 
     #   @movies = Movie.order(:title).all()
     #   @title_header = 'hilite'
