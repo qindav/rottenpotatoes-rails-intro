@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
     if params[:ratings].nil?
       @selected_ratings = %w(G PG PG-13 R)
     else
-      @selected_ratings = params[:ratings].keys
+      @selected_ratings = params[:ratings]
     end
     
     @movies = Movie.where(rating: @selected_ratings).order(params[:sort])
