@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = %w(G PG PG-13 R)
     
-    if params[:commit].nil?
+    if params[:commit].nil? or (params[:ratings].nil? and params([:commit]))
       @selected_ratings = %w(G PG PG-13 R)
     else
       @selected_ratings = params[:ratings].keys
