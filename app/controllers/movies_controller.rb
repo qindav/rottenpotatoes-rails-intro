@@ -14,8 +14,8 @@ class MoviesController < ApplicationController
   
   def index
     @all_ratings = %w(G PG PG-13 R)
-    @selected = params[:ratings]
-    @movies = Movie.where(rating: @selected)
+    @selected_ratings = params[:ratings] || {}
+    @movies = Movie.where(rating: @selected_ratings)
     
     
     # if params[:sort] == "title" 
