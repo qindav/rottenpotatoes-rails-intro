@@ -14,17 +14,21 @@ class MoviesController < ApplicationController
   
   def index
     @all_ratings = %w(G PG PG-13 R)
-    @selected_ratings = params[:ratings]
-    
-    
-    @movies = Movie.all()
-    if params[:sort] == "title" 
-      @movies = Movie.order(:title).all()
-      @title_header = 'hilite'
-    elsif params[:sort] == "release_date" 
-      @movies = Movie.order(:release_date).all()
-      @release_date_header = 'hilite'
+    @selected_ratings = params[:ratings] || {}
+    if @selected_ratings == {}
+      @selected_ratings = Hash[@all_ratings.map {|rating| [rating, rating]}]
     end
+    
+    @movies = Movie.where(rating: @selected_ratings.keys).order(ordering)
+    
+    # @movies = Movie.all()
+    # if params[:sort] == "title" 
+    #   @movies = Movie.order(:title).all()
+    #   @title_header = 'hilite'
+    # elsif params[:sort] == "release_date" 
+    #   @movies = Movie.order(:release_date).all()
+    #   @release_date_header = 'hilite'
+    # end
     
 
   end
