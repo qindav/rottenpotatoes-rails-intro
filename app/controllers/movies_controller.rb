@@ -15,7 +15,6 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = %w(G PG PG-13 R)
     @selected = params[:ratings]
-    flash[:notice] = "chosen ratings: {@selected}"
     @movies = Movie.all().where(rating: @selected_ratings)
     # if params[:sort] == "title" 
     #   @movies = Movie.order(:title).all()
