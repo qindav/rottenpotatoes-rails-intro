@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
     @all_ratings = %w(G PG PG-13 R)
     
     # if @selected_ratings == {}
-    #   @selected_rating = %w(G PG PG-13 R)
+    #   @selected_ratings = %w(G PG PG-13 R)
     # else
     #   @selected_ratings = params[:ratings].keys
     # end
