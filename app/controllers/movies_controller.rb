@@ -15,8 +15,8 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = %w(G PG PG-13 R)
     @selected = params[:ratings]
-    
-    # @movies = Movie.all().where(rating: @selected_ratings)
+    flash[:notice] = "chosen ratings: {@selected}"
+    @movies = Movie.all().where(rating: @selected_ratings)
     # if params[:sort] == "title" 
     #   @movies = Movie.order(:title).all()
     #   @title_header = 'hilite'
@@ -24,7 +24,6 @@ class MoviesController < ApplicationController
     #   @movies = Movie.order(:release_date).all()
     #   @release_date_header = 'hilite'
     # end
-    @movies = Movie.find_all_by_rating(@selected.keys, {:order => :title})
 
   end
   
