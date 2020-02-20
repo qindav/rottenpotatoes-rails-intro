@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
       @movies = Movie.order(:release_date).all()
       @release_date_header = 'hilite'
     end
-    
+    @all_ratings = %w(G PG PG-13 R)
     
     # @selected_ratings = params[:ratings]
     # if @selected_ratings == {}
